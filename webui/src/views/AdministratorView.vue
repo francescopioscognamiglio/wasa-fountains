@@ -24,6 +24,34 @@ export default {
 		},
 		async newItem() {
 			this.$router.push("/new");
+		},
+		async deleteFountain(id) {
+			this.loading = true;
+			this.errormsg = null;
+			try {
+				await this.$axios.delete("/fountains/" + id);
+
+				await this.refresh();
+			} catch (e) {
+				this.errormsg = e.toString();
+			}
+			this.loading = false;
+		},
+		async duplicateFountain(status, longitude, latitude) {
+			this.loading = true;
+			this.errormsg = null;
+			try {
+				await this.$axios.post("/fountains/", {
+					status: status,
+					latitude: latitude,
+					longitude: longitude,
+				});
+
+				await this.refresh();
+			} catch (e) {
+				this.errormsg = e.toString();
+			}
+			this.loading = false;
 		}
 	},
 	mounted() {
@@ -36,7 +64,7 @@ export default {
 	<div>
 		<div
 			class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h1 class="h2">Fountains list</h1>
+			<h1 class="h2">Administrative Fountains list</h1>
 			<div class="btn-toolbar mb-2 mb-md-0">
 				<div class="btn-group me-2">
 					<button type="button" class="btn btn-sm btn-outline-secondary" @click="refresh">
@@ -80,6 +108,10 @@ export default {
 						<li>Latitude: {{ f.latitude }}</li>
 					</ul>
 				</p>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+					<a href="javascript:" class="btn btn-danger" @click="deleteFountain(f.id)">Delete</a>
+					<a href="javascript:" class="btn btn-info" @click="duplicateFountain(f.status, f.longitude, f.latitude)">Duplicate</a>
+				</div>
 			</div>
 		</div>
 	</div>

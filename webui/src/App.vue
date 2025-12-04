@@ -27,12 +27,39 @@ export default {}
 								<svg class="feather"><use href="/feather-sprite-v4.29.0.svg#list"/></svg>
 								Fountains
 							</RouterLink>
+							<RouterLink to="/admin" class="nav-link">
+								<svg class="feather"><use href="/feather-sprite-v4.29.0.svg#list"/></svg>
+								Fountains (Admin view)
+							</RouterLink>
 						</li>
 						<li class="nav-item">
 							<RouterLink to="/new" class="nav-link">
 								<svg class="feather"><use href="/feather-sprite-v4.29.0.svg#plus-circle"/></svg>
 								New fountain
 							</RouterLink>
+						</li>
+						<li class="nav-item">
+							<span class="nav-link">Test menu option 1</span>
+						</li>
+						<li class="nav-item">
+							<span class="nav-link">Test menu option 2</span>
+						</li>
+						<li class="nav-item">
+							<span class="nav-link">Test menu option 3</span>
+						</li>
+						<li class="nav-item">
+							<span class="nav-link">Test menu option 4</span>
+						</li>
+					</ul>
+					<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+						<span>Administrator</span>
+					</h6>
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<span class="nav-link">Monitoring</span>
+						</li>
+						<li class="nav-item">
+							<span class="nav-link">Processes</span>
 						</li>
 					</ul>
 				</div>
